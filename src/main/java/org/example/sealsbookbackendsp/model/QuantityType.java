@@ -14,7 +14,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CountityType {
+public class QuantityType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
