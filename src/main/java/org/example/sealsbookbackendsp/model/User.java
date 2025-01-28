@@ -26,8 +26,8 @@ public class User {
     private String role;
     private String imageUrl;
     private String token;
-    private Timestamp updateTime;
-    private Timestamp createAt;
+    private Timestamp updateTime = new Timestamp(System.currentTimeMillis());
+    private Timestamp createAt = new Timestamp(System.currentTimeMillis());
 
     public User() {
     }
