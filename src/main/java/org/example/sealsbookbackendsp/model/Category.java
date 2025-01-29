@@ -1,5 +1,7 @@
 package org.example.sealsbookbackendsp.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,10 +14,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.List;
 
+
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class Category {
     @Id
@@ -23,12 +25,12 @@ public class Category {
     private Long id;
     private String name;
 
-
     @JsonIgnore
     @OneToMany(mappedBy = "category")
     private List<Product> products;
 
-    public Category(String name) {
-        this.name = name;
+    @JsonCreator
+    public Category(@JsonProperty("id") Long id) {
+        this.id = id;
     }
 }
