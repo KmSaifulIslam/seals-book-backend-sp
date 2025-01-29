@@ -44,7 +44,7 @@ public class UserController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/registration")
     public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest userRequest) {
         User user = userMapper.toEntity(userRequest);  // Convert to entity
         User savedUser = userService.saveUser(user);  // Save to DB
