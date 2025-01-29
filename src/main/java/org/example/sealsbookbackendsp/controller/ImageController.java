@@ -69,7 +69,7 @@ public class ImageController {
 
 
     // Get all images
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<Image>> getAllImages() {
         List<Image> images = imageService.getAllImages();
         return ResponseEntity.ok(images);
