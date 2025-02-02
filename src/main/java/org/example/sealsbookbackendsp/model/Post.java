@@ -24,7 +24,9 @@ public class Post {
     private String title;
     private String bannerUrl;
     private String promoVideoUrl;
+
     private String productId;
+
     private String natureOfDiscount;
     private String natureOfDiscountType;
     private String discountDetails;

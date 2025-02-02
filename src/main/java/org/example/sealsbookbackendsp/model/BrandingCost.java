@@ -9,20 +9,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.security.Timestamp;
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BrandingRequest {
+public class BrandingCost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long boostId;
-    private Boolean banner;
+    private String brandingType;
+    private Integer cost;
+    private Long userId;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
 
-    //Many to One
-    private Long brandingCostId;
-    private Boolean promotion_video;
-    private String paintingDetails;
+    // One to Many (BrandingRequest)
 }
