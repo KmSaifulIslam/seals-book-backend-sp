@@ -88,4 +88,46 @@ public class UserController {
         return user.map(u -> new ResponseEntity<>(userMapper.toResponse(u), HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+
+//    @GetMapping("/login")
+//    public ResponseEntity<UserResponse> loginUser(
+//            @RequestParam String email,
+//            @RequestParam String password) {
+//
+//        Optional<User> user = Optional.ofNullable(userService.getUserByEmailAndPassword(email, password));
+//
+//        if (user.isPresent()) {
+//            UserResponse userResponse = userMapper.toResponse(user.get());
+//            return new ResponseEntity<>(userResponse, HttpStatus.OK);
+//        } else {
+//            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+//        }
+//    }
+
+//    @PostMapping("/login")
+//    public ResponseEntity<UserResponse> loginUser(@RequestBody UserRequest userRequest) {
+//        Optional<User> user = userService.getUserByEmailAndPassword(userRequest.getEmail(), userRequest.getPassword());
+//
+//        if (user.isPresent()) {
+//            UserResponse userResponse = userMapper.toResponse(user.get());  // Extract the User from Optional
+//            return new ResponseEntity<>(userResponse, HttpStatus.OK);
+//        } else {
+//            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+//        }
+//    }
+
+    @PostMapping("/login")
+    public ResponseEntity<UserResponse> loginUser(@RequestBody UserRequest userRequest) {
+        Optional<User> user = userService.findByEmailAndPassword(userRequest.getEmail(), userRequest.getPassword());
+
+        if (user.isPresent()) {
+            return ResponseEntity.ok(userMapper.toResponse(user.get()));
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+    }
+
+
+
+
 }

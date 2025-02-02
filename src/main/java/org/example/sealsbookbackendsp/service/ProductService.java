@@ -49,6 +49,12 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
+    // Get Product By id
+    public Product getProductById(Long id) {
+        Optional<Product> productOptional = productRepository.findById(id);
+        return productOptional.orElseThrow(() -> new RuntimeException("Product not found with id: " + id));
+    }
+
     // Optional: Get All Products
     public List<Product> getAllProducts() {
         return productRepository.findAll();
