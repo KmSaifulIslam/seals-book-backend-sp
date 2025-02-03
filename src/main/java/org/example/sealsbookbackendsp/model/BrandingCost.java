@@ -23,8 +23,9 @@ public class BrandingCost {
     private String brandingType;
     private Integer cost;
     private Long userId;
-    private Timestamp createdAt;
-    private Timestamp updatedAt;
+
+    private java.sql.Timestamp updatedAt = new java.sql.Timestamp(System.currentTimeMillis());
+    private java.sql.Timestamp createdAt = new java.sql.Timestamp(System.currentTimeMillis());
 
     // One to Many (BrandingRequest)
 }

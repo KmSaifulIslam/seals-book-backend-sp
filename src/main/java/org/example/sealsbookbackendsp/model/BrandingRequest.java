@@ -25,4 +25,52 @@ public class BrandingRequest {
     private Long brandingCostId;
     private Boolean promotion_video;
     private String paintingDetails;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getBoostId() {
+        return boostId;
+    }
+
+    public void setBoostId(Long boostId) {
+        this.boostId = boostId;
+    }
+
+    public Boolean getBanner() {
+        return banner;
+    }
+
+    public void setBanner(Boolean banner) {
+        this.banner = banner;
+    }
+
+    public Long getBrandingCostId() {
+        return brandingCostId;
+    }
+
+    public void setBrandingCostId(Long brandingCostId) {
+        this.brandingCostId = brandingCostId;
+    }
+
+    public Boolean getPromotion_video() {
+        return promotion_video;
+    }
+
+    public void setPromotion_video(Boolean promotion_video) {
+        this.promotion_video = promotion_video;
+    }
+
+    public String getPaintingDetails() {
+        return paintingDetails;
+    }
+
+    public void setPaintingDetails(String paintingDetails) {
+        this.paintingDetails = paintingDetails;
+    }
 }
