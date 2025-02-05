@@ -1,9 +1,7 @@
 package org.example.sealsbookbackendsp.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,6 +16,10 @@ public class Size {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long productId;
     private String sizeName;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    @JsonIgnore
+    private Product product;
 }

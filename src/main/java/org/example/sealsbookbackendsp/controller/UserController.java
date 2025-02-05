@@ -31,13 +31,12 @@ public class UserController {
         return new ResponseEntity<>("Hello, welcome to the User API!", HttpStatus.OK);
     }
 
-    // Get all users (at /api/users/all)
     @GetMapping("/all")
     public ResponseEntity<List<UserResponse>> getAllUsers() {
-        List<User> users = userService.getAllUsers();  // Fetch all users
+        List<User> users = userService.getAllUsers();
         if (!users.isEmpty()) {
             List<UserResponse> userResponses = users.stream()
-                    .map(userMapper::toResponse)  // Convert users to responses
+                    .map(userMapper::toResponse)
                     .collect(Collectors.toList());
             return new ResponseEntity<>(userResponses, HttpStatus.OK);
         } else {
@@ -47,9 +46,9 @@ public class UserController {
 
     @PostMapping("/registration")
     public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest userRequest) {
-        User user = userMapper.toEntity(userRequest);  // Convert to entity
-        User savedUser = userService.saveUser(user);  // Save to DB
-        UserResponse userResponse = userMapper.toResponse(savedUser);  // Convert to response
+        User user = userMapper.toEntity(userRequest);
+        User savedUser = userService.saveUser(user);
+        UserResponse userResponse = userMapper.toResponse(savedUser);
         return new ResponseEntity<>(userResponse, HttpStatus.CREATED);
     }
 

@@ -32,10 +32,28 @@ public class Product {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Image> images;
 
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Color> colors;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Color> sizes;
+
     public Product() {
     }
 
-    public Product(Long id, String name, String brand, BigDecimal price, int inventory, String description, Category category, List<Image> images) {
+//    public Product(Long id, String name, String brand, BigDecimal price, int inventory, String description, Category category, List<Image> images) {
+//        this.id = id;
+//        this.name = name;
+//        this.brand = brand;
+//        this.price = price;
+//        this.inventory = inventory;
+//        this.description = description;
+//        this.category = category;
+//        this.images = images;
+//    }
+
+
+    public Product(Long id, String name, String brand, BigDecimal price, int inventory, String description, Category category, List<Image> images, List<Color> colors, List<Color> sizes) {
         this.id = id;
         this.name = name;
         this.brand = brand;
@@ -44,6 +62,8 @@ public class Product {
         this.description = description;
         this.category = category;
         this.images = images;
+        this.colors = colors;
+        this.sizes = sizes;
     }
 
     public Long getId() {
@@ -108,5 +128,21 @@ public class Product {
 
     public void setImages(List<Image> images) {
         this.images = images;
+    }
+
+    public List<Color> getColors() {
+        return colors;
+    }
+
+    public void setColors(List<Color> colors) {
+        this.colors = colors;
+    }
+
+    public List<Color> getSizes() {
+        return sizes;
+    }
+
+    public void setSizes(List<Color> sizes) {
+        this.sizes = sizes;
     }
 }
