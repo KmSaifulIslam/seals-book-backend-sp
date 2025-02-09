@@ -10,8 +10,8 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 public class Size {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,4 +22,37 @@ public class Size {
     @JoinColumn(name = "product_id")
     @JsonIgnore
     private Product product;
+
+    public Size() {
+    }
+
+    public Size(Long id, String sizeName, Product product) {
+        this.id = id;
+        this.sizeName = sizeName;
+        this.product = product;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getSizeName() {
+        return sizeName;
+    }
+
+    public void setSizeName(String sizeName) {
+        this.sizeName = sizeName;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 }

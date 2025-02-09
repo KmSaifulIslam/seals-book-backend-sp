@@ -22,7 +22,7 @@ public class BrandingCost {
     private Long id;
     private String brandingType;
     private Integer cost;
-    private Long userId;
+    private Long createdUserId;
 
     private java.sql.Timestamp updatedAt = new java.sql.Timestamp(System.currentTimeMillis());
     private java.sql.Timestamp createdAt = new java.sql.Timestamp(System.currentTimeMillis());
