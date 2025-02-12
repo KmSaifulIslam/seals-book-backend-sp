@@ -27,4 +27,10 @@ public class UserService {
     public User saveUser(User user) {
         return userRepository.save(user);
     }
+
+    public User updateUserToken(User user) {
+        User user1 = userRepository.findByEmail(user.getEmail()).get();
+        user1.setToken(user.getToken());
+        return userRepository.save(user1);
+    }
 }

@@ -31,6 +31,10 @@ public class AuthController {
 
         // Encrypt the user's password before saving
         user.setPassword(passwordEncoder.encode(user.getPassword())); // Use passwordEncoder to encode password
+        user.setRole(user.getRole());
+        String token = jwtService.generateToken(user.getEmail());
+        user.setToken(token);
+
         userService.saveUser(user);
 
         return ResponseEntity.ok("User registered successfully.");
@@ -45,7 +49,9 @@ public class AuthController {
         }
 
         String token = jwtService.generateToken(user.getEmail());
-//        String token = "Hello token";
+
+        user.setToken(token);
+        userService.updateUserToken(user);
 
         return ResponseEntity.ok("Bearer " + token); // Send back the token in the response
     }

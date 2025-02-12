@@ -23,7 +23,7 @@ public class User {
     private String password;
     private String email;
     private String phone;
-    private Role role;  // Change role to an enum
+    private String role;  // Change role to an enum
     private String imageUrl;
     private String token;
 
@@ -33,7 +33,7 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String name, String password, String email, String phone, Role role, String imageUrl, String token, Timestamp updateTime, Timestamp createAt) {
+    public User(Long id, String name, String password, String email, String phone, String role, String imageUrl, String token, Timestamp updateTime, Timestamp createAt) {
         this.id = id;
         this.name = name;
         this.password = password;
@@ -86,11 +86,11 @@ public class User {
         this.phone = phone;
     }
 
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
     }
 

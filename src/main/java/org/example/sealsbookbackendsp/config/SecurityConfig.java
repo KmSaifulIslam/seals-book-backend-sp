@@ -31,7 +31,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // Disable CSRF for simplicity, depending on your needs
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/register", "/api/auth/login", "/api/products/all").permitAll() // Ensure these paths are allowed
+                        .requestMatchers("/api/auth/register", "/api/auth/login", "/api/**").permitAll() // Ensure these paths are allowed
                         .anyRequest().authenticated() // Protect other routes
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
