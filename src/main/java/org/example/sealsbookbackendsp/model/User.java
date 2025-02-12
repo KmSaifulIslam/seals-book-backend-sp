@@ -1,42 +1,39 @@
 package org.example.sealsbookbackendsp.model;
 
+import org.example.sealsbookbackendsp.enums.Role;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Timestamp;
 
-@Entity
 @Getter
 @Setter
+@Entity
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private String password;
     private String email;
     private String phone;
-    private String role;
+    private Role role;  // Change role to an enum
     private String imageUrl;
     private String token;
+
     private Timestamp updateTime = new Timestamp(System.currentTimeMillis());
     private Timestamp createAt = new Timestamp(System.currentTimeMillis());
 
     public User() {
     }
 
-    public void setCreateAt(Timestamp createAt) {
-        this.createAt = createAt;
-    }
-
-    public User(Long id, String name, String password, String email, String phone, String role, String imageUrl, String token, Timestamp updateTime, Timestamp createAt) {
+    public User(Long id, String name, String password, String email, String phone, Role role, String imageUrl, String token, Timestamp updateTime, Timestamp createAt) {
         this.id = id;
         this.name = name;
         this.password = password;
@@ -89,11 +86,11 @@ public class User {
         this.phone = phone;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 
@@ -123,5 +120,9 @@ public class User {
 
     public Timestamp getCreateAt() {
         return createAt;
+    }
+
+    public void setCreateAt(Timestamp createAt) {
+        this.createAt = createAt;
     }
 }

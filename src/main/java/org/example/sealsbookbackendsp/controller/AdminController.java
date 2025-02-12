@@ -7,11 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/user")
-public class UserController {
+@RequestMapping("/api/admin")
+@PreAuthorize("hasRole('ADMIN')")
+public class AdminController {
 
-    @GetMapping("/profile")
-    public ResponseEntity<String> getUserProfile() {
-        return ResponseEntity.ok("User Profile Data");
+    @GetMapping("/dashboard")
+    public ResponseEntity<String> getAdminDashboard() {
+        return ResponseEntity.ok("Welcome to Admin Dashboard");
     }
 }
