@@ -24,6 +24,13 @@ public class UserService {
         return new CustomUserDetails(user);
     }
 
+    public User loadUserByUserEmail(String email) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(email).orElseThrow(() ->
+                new UsernameNotFoundException("User not found with email: " + email));
+
+        return user;
+    }
+
     public User saveUser(User user) {
         return userRepository.save(user);
     }

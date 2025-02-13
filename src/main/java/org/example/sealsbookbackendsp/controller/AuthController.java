@@ -6,6 +6,7 @@ import org.example.sealsbookbackendsp.config.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,7 +39,9 @@ public class AuthController {
 
         userService.saveUser(user);
 
-        return ResponseEntity.ok(user);
+        User userDetails = userService.loadUserByUserEmail(user.getEmail());
+
+        return ResponseEntity.ok(userDetails);
     }
 
     // Login endpoint
@@ -52,9 +55,9 @@ public class AuthController {
         String token = jwtService.generateToken(user.getEmail());
 
         user.setToken(token);
-        userService.updateUserToken(user);
+        User userData =  userService.updateUserToken(user);
 
-        return ResponseEntity.ok(user); // Send back the token in the response
+        return ResponseEntity.ok(userData);
 //        return ResponseEntity.ok("Bearer " + token); // Send back the token in the response
     }
 }
