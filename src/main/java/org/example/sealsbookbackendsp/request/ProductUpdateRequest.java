@@ -1,18 +1,11 @@
-package org.example.sealsbookbackendsp.dto;
+package org.example.sealsbookbackendsp.request;
 
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import lombok.Data;
 import org.example.sealsbookbackendsp.model.Category;
-
 import java.math.BigDecimal;
-import java.util.List;
 
 @Data
-public class ProductDto {
+public class ProductUpdateRequest {
     private Long id;
     private String name;
     private String brand;
@@ -20,5 +13,4 @@ public class ProductDto {
     private int inventory;
     private String description;
     private Category category;
-    private List<ImageDto> images;
 }

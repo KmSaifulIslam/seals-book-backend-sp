@@ -1,12 +1,9 @@
 package org.example.sealsbookbackendsp.config;
 
-import lombok.RequiredArgsConstructor;
 import org.example.sealsbookbackendsp.service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.ProviderManager;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -31,7 +28,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // Disable CSRF for simplicity, depending on your needs
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/register", "/api/auth/login", "/api/**").permitAll() // Ensure these paths are allowed
+                        .requestMatchers("/api/auth/register", "/api/auth/login", "/api/**", "/api/cart/**").permitAll() // Ensure these paths are allowed
                         .anyRequest().authenticated() // Protect other routes
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

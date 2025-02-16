@@ -1,14 +1,12 @@
 package org.example.sealsbookbackendsp.model;
 
+import jakarta.persistence.*;
 import org.example.sealsbookbackendsp.enums.Role;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Getter
 @Setter
@@ -29,6 +27,12 @@ public class User {
 
     private Timestamp updateTime = new Timestamp(System.currentTimeMillis());
     private Timestamp createAt = new Timestamp(System.currentTimeMillis());
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Cart cart;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Order> orders;
 
     public User() {
     }

@@ -18,6 +18,21 @@ public class ProductService {
 
     // Create Product
     public Product createProduct(Product product) {
+        // Set product reference in colors
+        if (product.getColors() != null) {
+            product.getColors().forEach(color -> color.setProduct(product));
+        }
+
+        // Set product reference in sizes
+        if (product.getSizes() != null) {
+            product.getSizes().forEach(size -> size.setProduct(product));
+        }
+
+        // Set product reference in images (if needed)
+        if (product.getImages() != null) {
+            product.getImages().forEach(image -> image.setProduct(product));
+        }
+
         return productRepository.save(product);
     }
 
