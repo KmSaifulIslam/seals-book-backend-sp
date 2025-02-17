@@ -28,8 +28,8 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // Disable CSRF for simplicity, depending on your needs
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/register", "/api/auth/login", "/api/**", "/api/cart/**").permitAll() // Ensure these paths are allowed
-                        .anyRequest().authenticated() // Protect other routes
+                        .requestMatchers("/api/auth/register", "/api/auth/login", "/api/**", "/api/cart/**", "/api/orders/**").permitAll()
+                        .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

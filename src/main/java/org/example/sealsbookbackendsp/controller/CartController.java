@@ -25,6 +25,7 @@ public class CartController {
 
     @PostMapping("/{userId}/add")
     public ResponseEntity<Cart> addItemToCart(@PathVariable Long userId, @RequestBody CartItem cartItem) {
+
         return ResponseEntity.ok(cartService.addItemToCart(userId, cartItem));
     }
 

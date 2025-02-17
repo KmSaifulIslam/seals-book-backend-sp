@@ -10,7 +10,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/orders")
-//@RequiredArgsConstructor
 public class OrderController {
 
     private final OrderService orderService;
@@ -22,6 +21,11 @@ public class OrderController {
     @PostMapping("/{userId}")
     public ResponseEntity<Order> placeOrder(@PathVariable Long userId) {
         return ResponseEntity.ok(orderService.placeOrder(userId));
+    }
+
+    @GetMapping("/test")
+    public String test() {
+        return "test response .....";
     }
 
     @GetMapping("/{orderId}")

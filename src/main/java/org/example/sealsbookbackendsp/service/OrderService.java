@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-//@RequiredArgsConstructor // Ensure constructor injection
 public class OrderService {
 
     private final OrderRepository orderRepository;
@@ -28,7 +27,6 @@ public class OrderService {
         this.userRepository = userRepository;
     }
 
-    // Constructor is generated automatically by @RequiredArgsConstructor
 
     public Order placeOrder(Long userId) {
         Cart cart = cartRepository.findByUserId(userId).orElseThrow(() -> new RuntimeException("Cart not found"));
@@ -43,13 +41,13 @@ public class OrderService {
         order.setTotalAmount(cart.getTotalAmount());
 
         orderRepository.save(order);
-
-        List<OrderItem> orderItems = cart.getItems().stream().map(cartItem -> {
-            OrderItem orderItem = new OrderItem(order, cartItem.getProduct(), cartItem.getQuantity(), cartItem.getUnitPrice());
-            return orderItemRepository.save(orderItem);
-        }).collect(Collectors.toList());
-
-        order.setOrderItems(orderItems.stream().collect(Collectors.toSet()));
+//
+//        List<OrderItem> orderItems = cart.getItems().stream().map(cartItem -> {
+//            OrderItem orderItem = new OrderItem(order, cartItem.getProduct(), cartItem.getQuantity(), cartItem.getUnitPrice());
+//            return orderItemRepository.save(orderItem);
+//        }).collect(Collectors.toList());
+//
+//        order.setOrderItems(orderItems.stream().collect(Collectors.toSet()));
 
         // Clear cart after order is placed
         cart.getItems().clear();
