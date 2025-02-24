@@ -21,12 +21,12 @@ public class OrderItem {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "order_id", nullable = false)
+    @JoinColumn(name = "order_id", nullable = true)
     private Order order;
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
+    @JoinColumn(name = "product_id", nullable = true)
     private Product product;
 
     public OrderItem(Order order, Product product, int quantity, BigDecimal price) {

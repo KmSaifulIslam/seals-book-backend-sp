@@ -2,6 +2,7 @@ package org.example.sealsbookbackendsp.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,6 +30,12 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Image> images;
 
@@ -54,6 +61,28 @@ public class Product {
         this.colors = colors;
         this.sizes = sizes;
     }
+
+//    public Product(Long id, String name, String brand, BigDecimal price, int inventory, String description, Category category, User user, List<Image> images, List<Color> colors, List<Size> sizes) {
+//        this.id = id;
+//        this.name = name;
+//        this.brand = brand;
+//        this.price = price;
+//        this.inventory = inventory;
+//        this.description = description;
+//        this.category = category;
+//        this.user = user;
+//        this.images = images;
+//        this.colors = colors;
+//        this.sizes = sizes;
+//    }
+//
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     public Long getId() {
         return id;

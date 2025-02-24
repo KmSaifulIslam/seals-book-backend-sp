@@ -7,6 +7,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
 import org.example.sealsbookbackendsp.model.Category;
+import org.example.sealsbookbackendsp.model.User;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -20,5 +21,6 @@ public class ProductDto {
     private int inventory;
     private String description;
     private Category category;
+//    private User user;
     private List<ImageDto> images;
 }

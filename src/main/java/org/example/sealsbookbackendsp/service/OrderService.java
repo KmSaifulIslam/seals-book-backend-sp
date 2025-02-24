@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,9 +46,9 @@ public class OrderService {
 //        List<OrderItem> orderItems = cart.getItems().stream().map(cartItem -> {
 //            OrderItem orderItem = new OrderItem(order, cartItem.getProduct(), cartItem.getQuantity(), cartItem.getUnitPrice());
 //            return orderItemRepository.save(orderItem);
-//        }).collect(Collectors.toList());
+//        }).toList();
 //
-//        order.setOrderItems(orderItems.stream().collect(Collectors.toSet()));
+//        order.setOrderItems(new HashSet<>(orderItems));
 
         // Clear cart after order is placed
         cart.getItems().clear();
