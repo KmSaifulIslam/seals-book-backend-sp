@@ -30,11 +30,12 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+//    @JsonIgnore
+//    @ManyToOne
+//    @JoinColumn(name = "user_id", nullable = false)
+//    private User user;
 
+    private Long storeId;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Image> images;
@@ -48,8 +49,7 @@ public class Product {
     public Product() {
     }
 
-
-    public Product(Long id, String name, String brand, BigDecimal price, int inventory, String description, Category category, List<Image> images, List<Color> colors, List<Size> sizes) {
+    public Product(Long id, String name, String brand, BigDecimal price, int inventory, String description, Category category, Long storeId, List<Image> images, List<Color> colors, List<Size> sizes) {
         this.id = id;
         this.name = name;
         this.brand = brand;
@@ -57,6 +57,7 @@ public class Product {
         this.inventory = inventory;
         this.description = description;
         this.category = category;
+        this.storeId = storeId;
         this.images = images;
         this.colors = colors;
         this.sizes = sizes;
@@ -83,6 +84,15 @@ public class Product {
 //    public void setUser(User user) {
 //        this.user = user;
 //    }
+
+
+    public Long getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(Long storeId) {
+        this.storeId = storeId;
+    }
 
     public Long getId() {
         return id;

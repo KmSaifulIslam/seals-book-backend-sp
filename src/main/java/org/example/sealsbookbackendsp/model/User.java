@@ -35,8 +35,8 @@ public class User {
     private List<Order> orders;
 
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Product> Product;
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Product> Product;
 
 
     public User() {
@@ -55,7 +55,7 @@ public class User {
 //        this.createAt = createAt;
 //    }
 
-    public User(Long id, String name, String password, String email, String phone, String role, String imageUrl, String token, Timestamp updateTime, Timestamp createAt, Cart cart, List<Order> orders, List<org.example.sealsbookbackendsp.model.Product> product) {
+    public User(Long id, String name, String password, String email, String phone, String role, String imageUrl, String token, Timestamp updateTime, Timestamp createAt, Cart cart, List<Order> orders) {
         this.id = id;
         this.name = name;
         this.password = password;
@@ -68,7 +68,7 @@ public class User {
         this.createAt = createAt;
         this.cart = cart;
         this.orders = orders;
-        Product = product;
+//        Product = product;
     }
 
     public Cart getCart() {
@@ -85,14 +85,6 @@ public class User {
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
-    }
-
-    public List<Product> getProduct() {
-        return Product;
-    }
-
-    public void setProduct(List<Product> product) {
-        Product = product;
     }
 
     public Long getId() {
