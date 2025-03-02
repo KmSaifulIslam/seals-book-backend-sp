@@ -33,8 +33,9 @@ public class Store {
     private String whatsappNumber;
 
     private String storeOwnerType;
+    private Long storeOwnerId;
 
-    @ManyToOne
-    @JoinColumn(name = "seller_id", nullable = false)
-    private User storeOwner;
+//    @ManyToOne
+//    @JoinColumn(name = "seller_id", nullable = true)
+//    private User storeOwner;
 }
