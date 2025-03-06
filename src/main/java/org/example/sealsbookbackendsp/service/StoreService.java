@@ -9,5 +9,6 @@ public interface StoreService {
     Store updateStore(Long storeId, Store storeDetails);
     void deleteStore(Long storeId);
     Store getStoreById(Long storeId);
+    Store getStoreByOwnerId(Long storeOwnerId);
     List<Store> getAllStores();
 }

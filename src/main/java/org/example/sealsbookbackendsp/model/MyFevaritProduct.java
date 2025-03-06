@@ -12,8 +12,6 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class MyFevaritProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,5 +19,47 @@ public class MyFevaritProduct {
     private Long productId;
     private Long userId;
     private Long storeId;
+
+    public MyFevaritProduct() {
+    }
+
+    public MyFevaritProduct(Long id, Long productId, Long userId, Long storeId) {
+        this.id = id;
+        this.productId = productId;
+        this.userId = userId;
+        this.storeId = storeId;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Long getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(Long storeId) {
+        this.storeId = storeId;
+    }
 }
 

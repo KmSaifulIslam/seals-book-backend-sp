@@ -45,6 +45,13 @@ public class StoreController {
         return ResponseEntity.ok(store);
     }
 
+    // ✅ Get Store by ID
+    @GetMapping("store/{ownerId}")
+    public ResponseEntity<Store> getStoreByOwnerId(@PathVariable Long ownerId) {
+        Store store = storeService.getStoreByOwnerId(ownerId);
+        return ResponseEntity.ok(store);
+    }
+
     // ✅ Get All Stores
     @GetMapping
     public ResponseEntity<List<Store>> getAllStores() {

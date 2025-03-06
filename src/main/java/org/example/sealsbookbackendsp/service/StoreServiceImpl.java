@@ -61,6 +61,12 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @Override
+    public Store getStoreByOwnerId(Long storeOwnerId) {
+        List<Store> storeList = storeRepository.findByStoreOwnerId(storeOwnerId);
+        return storeList.stream().findFirst().get();
+    }
+
+    @Override
     public List<Store> getAllStores() {
         return storeRepository.findAll();
     }
