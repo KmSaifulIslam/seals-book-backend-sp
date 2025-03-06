@@ -77,11 +77,33 @@ public class CartService {
 //        return cartRepository.save(cart);
 //    }
 
+//    public Cart addItemToCart(Long userId, CartItem cartItem) {
+//        System.out.println("Received cart item: " + cartItem);
+//        if (cartItem.getProduct() == null || cartItem.getProduct().getId() == null) {
+//            throw new IllegalArgumentException("Product ID cannot be null");
+//        }
+//
+//        Product product = productRepository.findById(cartItem.getProduct().getId())
+//                .orElseThrow(() -> new RuntimeException("Product not found"));
+//
+//        Cart cart = getCartByUserId(userId);
+//        cartItem.setCart(cart);
+//        cartItem.setProduct(product);
+//        cartItem.setTotalPrice(cartItem.getUnitPrice().multiply(BigDecimal.valueOf(cartItem.getQuantity())));
+//
+//        cartItemRepository.save(cartItem);
+//        cart.getItems().add(cartItem);
+//        updateCartTotal(cart);
+//        return cartRepository.save(cart);
+//    }
+
     public Cart addItemToCart(Long userId, CartItem cartItem) {
         System.out.println("Received cart item: " + cartItem);
         if (cartItem.getProduct() == null || cartItem.getProduct().getId() == null) {
             throw new IllegalArgumentException("Product ID cannot be null");
         }
+
+
 
         Product product = productRepository.findById(cartItem.getProduct().getId())
                 .orElseThrow(() -> new RuntimeException("Product not found"));

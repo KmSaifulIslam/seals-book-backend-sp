@@ -17,7 +17,9 @@ import lombok.Setter;
 public class MyFevaritProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private Long productId;
-    private Long brandId;
+    private Long userId;
+    private Long storeId;
 }
+

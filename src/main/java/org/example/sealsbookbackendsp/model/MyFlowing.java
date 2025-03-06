@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.security.Timestamp;
+
 @Entity
 @Getter
 @Setter
@@ -18,7 +20,10 @@ public class MyFlowing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long brandId;
     private int flowing_status;
+    private Long storeId;
+    private Long userId;
+    private Timestamp created_at;
+    private Timestamp updated_at;
 
 }
