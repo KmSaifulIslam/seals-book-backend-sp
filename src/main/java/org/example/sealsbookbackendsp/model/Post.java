@@ -1,57 +1,51 @@
 package org.example.sealsbookbackendsp.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
-@Getter
-@Setter
-//@NoArgsConstructor
-//@AllArgsConstructor
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
-    private Long userId;
+
+    private Long storeId;
     private String title;
     private String bannerUrl;
     private String promoVideoUrl;
 
-//    private String status;
-
-    private String productId;
+    @ElementCollection
+    private List<Long> productsId;
 
     private String natureOfDiscount;
     private String natureOfDiscountType;
     private String discountDetails;
     private String facebookBoostingDetails;
-    private Timestamp updateTime = new Timestamp(System.currentTimeMillis());
-    private Timestamp createAt = new Timestamp(System.currentTimeMillis());
+
+    @UpdateTimestamp
+    private Timestamp updateTime;
+
+    @CreationTimestamp
+    private Timestamp createAt;
 
     public Post() {
     }
 
-    public Post(Long postId, Long userId, String title, String bannerUrl, String promoVideoUrl, String productId, String natureOfDiscount, String natureOfDiscountType, String discountDetails, String facebookBoostingDetails, Timestamp updateTime, Timestamp createAt) {
-        this.postId = postId;
-        this.userId = userId;
+    public Post(Long storeId, String title, String bannerUrl, String promoVideoUrl, List<Long> productsId,
+                String natureOfDiscount, String natureOfDiscountType, String discountDetails, String facebookBoostingDetails) {
+        this.storeId = storeId;
         this.title = title;
         this.bannerUrl = bannerUrl;
         this.promoVideoUrl = promoVideoUrl;
-        this.productId = productId;
+        this.productsId = productsId;
         this.natureOfDiscount = natureOfDiscount;
         this.natureOfDiscountType = natureOfDiscountType;
         this.discountDetails = discountDetails;
         this.facebookBoostingDetails = facebookBoostingDetails;
-        this.updateTime = updateTime;
-        this.createAt = createAt;
     }
 
     public Long getPostId() {
@@ -62,12 +56,12 @@ public class Post {
         this.postId = postId;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getStoreId() {
+        return storeId;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setStoreId(Long storeId) {
+        this.storeId = storeId;
     }
 
     public String getTitle() {
@@ -94,12 +88,12 @@ public class Post {
         this.promoVideoUrl = promoVideoUrl;
     }
 
-    public String getProductId() {
-        return productId;
+    public List<Long> getProductsId() {
+        return productsId;
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public void setProductsId(List<Long> productsId) {
+        this.productsId = productsId;
     }
 
     public String getNatureOfDiscount() {

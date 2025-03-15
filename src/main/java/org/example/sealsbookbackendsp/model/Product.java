@@ -63,28 +63,6 @@ public class Product {
         this.sizes = sizes;
     }
 
-//    public Product(Long id, String name, String brand, BigDecimal price, int inventory, String description, Category category, User user, List<Image> images, List<Color> colors, List<Size> sizes) {
-//        this.id = id;
-//        this.name = name;
-//        this.brand = brand;
-//        this.price = price;
-//        this.inventory = inventory;
-//        this.description = description;
-//        this.category = category;
-//        this.user = user;
-//        this.images = images;
-//        this.colors = colors;
-//        this.sizes = sizes;
-//    }
-//
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
-
 
     public Long getStoreId() {
         return storeId;
