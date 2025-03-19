@@ -12,7 +12,6 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
-
     private Long storeId;
     private String title;
     private String bannerUrl;
